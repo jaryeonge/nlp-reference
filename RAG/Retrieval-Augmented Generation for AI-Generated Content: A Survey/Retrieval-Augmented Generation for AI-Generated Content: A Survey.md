@@ -32,73 +32,73 @@ AIGC는 사람이 직접하거나 rule-based로 하는 것보다 더 적절한 �
 <img width="946" alt="image" src="https://github.com/jaryeonge/nlp-reference/assets/52644464/6a86e1e1-279e-486b-a0a3-5acd9e9927d7">
 
 1. Query-based RAG: Prompt augmentation이라고도 불리며 retriever를 통해 추출한 document를 generator의 input으로 직접 넣는 방식
-** Have to read: REALM, KILT, SELF-RAG, REPLUG
+  - ** Have to read: REALM, KILT, SELF-RAG, REPLUG
 2. Latent Representation-based RAG: Generator와 retrieved objects와 interact하여 최종 output을 산출하는 방식
-** Have to read: FiD, Retro, TOME, EaE
+  - ** Have to read: FiD, Retro, TOME, EaE
 3. Logit-based RAG: Retriever와 generator가 독립적으로 output을 산출하여 logit기반으로 결합하는 방식
-** Have to read: kNN-LM, TRIME
+  - ** Have to read: kNN-LM, TRIME
 4. Speculative RAG: Generator를 생략하고 retriever만 사용해서 resouces를 절약하는 방식
-** Have to read: REST, GPTCache
+  - ** Have to read: REST, GPTCache
 
 ### RAG Enhancements
 
 <img width="935" alt="image" src="https://github.com/jaryeonge/nlp-reference/assets/52644464/9ea66156-0d1e-47ea-809c-189fa1464016">
 
 1. Input Enhacement: User query의 quality를 높이는 방식
-  a. query transformation: query를 가공하여 더 풍부한 relevant information을 얻을 수 있다.
-  b. data augmentation: irrelevant information을 지우고 outdated된 document를 update하는 등의 작업을 통해 retriever의 성능을 향상
+  - query transformation: query를 가공하여 더 풍부한 relevant information을 얻을 수 있다.
+  - data augmentation: irrelevant information을 지우고 outdated된 document를 update하는 등의 작업을 통해 retriever의 성능을 향상
 2. Retriever Enhancement: Retriever의 quality를 높이는 방식
-  a. Recurive Retireve: retrieve 전에 query를 분리하여 multiple search를 하는 방식. CoT의 input으로 이용하기에 적절
-  b. Chunk Optimization: chunk의 크기를 조정하여 성능을 향상
-  c. Finetune Retriever: retiever를 fine-tuning하여 성능을 향상. embedding model을 tuning하거나 REPLUG처럼 아예 retriever 자체를 훈련할 수도 있다.
-  d. Hybrid Retrieve: dense + sparse retrieval methods를 동시에 사용하여 성능을 향상
-  e. Re-ranking: retriever의 결과물의 ranking을 조절하여 성능을 향상
-  f. Meta-data Filtering: document를 filtering하여 성능을 향상
+  - Recurive Retireve: retrieve 전에 query를 분리하여 multiple search를 하는 방식. CoT의 input으로 이용하기에 적절
+  - Chunk Optimization: chunk의 크기를 조정하여 성능을 향상
+  - Finetune Retriever: retiever를 fine-tuning하여 성능을 향상. embedding model을 tuning하거나 REPLUG처럼 아예 retriever 자체를 훈련할 수도 있다.
+  - Hybrid Retrieve: dense + sparse retrieval methods를 동시에 사용하여 성능을 향상
+  - Re-ranking: retriever의 결과물의 ranking을 조절하여 성능을 향상
+  - Meta-data Filtering: document를 filtering하여 성능을 향상
 3. Generator Enhancement: Generator의 quality를 높이는 방식
-  a. Prompt Engineering: Stepback Prompt, Active Propmt, Chain of Thought Prompt 등의 prompt 고도화 기법으로 성능을 향상
-  b. Decoding Tuning: 별도의 decoder를 추가, 이를 tuning하여 성능을 향상
-  c. Finetune Generator: geneator를 fint-tuning하여 성능을 향상
+  - Prompt Engineering: Stepback Prompt, Active Propmt, Chain of Thought Prompt 등의 prompt 고도화 기법으로 성능을 향상
+  - Decoding Tuning: 별도의 decoder를 추가, 이를 tuning하여 성능을 향상
+  - Finetune Generator: geneator를 fint-tuning하여 성능을 향상
 4. Result Enhancement
-  a. Rewrite Output: output을 재생성하여 성능을 향상
+  - Rewrite Output: output을 재생성하여 성능을 향상
 5. RAG Pipeline Enhancement
-  a. Adaptive Retrieval: 의도 분류와 분기처리를 통해 효율적인 리소스 사용, Rule-based & Model-based 방식 존재.
-  b. Iterative RAG: 반복적으로 RAG 과정을 수행하여 성능을 향상. query -> retreiver -> generator -> output -> retreiver -> generator ...
+  - Adaptive Retrieval: 의도 분류와 분기처리를 통해 효율적인 리소스 사용, Rule-based & Model-based 방식 존재.
+  - Iterative RAG: 반복적으로 RAG 과정을 수행하여 성능을 향상. query -> retreiver -> generator -> output -> retreiver -> generator ...
 
 ## 4. Applications
 
 <img width="932" alt="image" src="https://github.com/jaryeonge/nlp-reference/assets/52644464/df2d845a-6bac-4793-9efd-d2ebb22ad1e8">
 
 1. RAG for Text
-  a. Question Answering: 광범위한 답변 후보의 범위를 축소
-  b. Fact Verification: Fact information을 활용하여 hallucination 감소
-  c. Commonsense Reasoning: commonsense knowledge를 활용하여 human-like한 방식으로 추론하고 decision-making
-  d. Human-Machine Conversation: commonsense knowledge를 활용하여 인간과 기계사이의 대화를 끊김없이 제공
-  e. Neural Machine Translation: 전통적인 bilingual corpora 의존도를 RAG를 통해 감소
-  f. Event Extraction: event의 case를 knowledge로 활용하여 성능 향상
-  g. Summarization: non-English 문제를 해결하거나 top-k의 hidden states를 retrieve하여 모델의 longer inputs 처리 능력을 향상
-2. RAG for Code: 예제 코드를 retrieve하여 성능 향상
-  a. Code Generation
-  b. Code Summary
-  c. Code Completion
-  d. Automatic Program Repair
-  e. Text-to-SQL and Code-based Semantic Parsing
-3. RAG for Audio
-  a. Audio Generation: 관련 오디오를 retrieve하여 성능 향상 및 비슷한 느낌의 오디오를 LLM 학습 없이 생성
-  b. Audio Captioning: 관련 캡션을 retrieve하여 성능 향상 및 캡션의 후보를 제시하여 선택할 수 있게 유도
-4. RAG for Image
-  a. Image Generation: 관련 이미지를 retrieve하여 성능 향상 및 비슷한 느낌의 이미지를 LLM 학습 없이 생성
-  b. Image Captioing: 관련 캡션을 retrieve하여 성능 향상 및 캡션의 후보를 제시하여 선택할 수 있게 유도
-5. RAG for Video
-  a. Video Generation: 관련 plot을 retrieve하여 성능 향상
-  b. Video Captioning: 관련 캡션을 retrieve하여 성능 향상 및 캡션의 후보를 제시하여 선택할 수 있게 유도
-6. RAG for 3D
-  a. Text-to-3D: retrieve한 3D asset을 dffusion 모델에 적용
-7. RAG for knowledge
-  a. Knowledge Base Question Answering: Knowledege base를 기반하여 답변을 생성하여 domain 최적화
-  b. Knowledge Graph Completion: relevant triplets를 retrieve하여 fusion-in-decoder에 적용
-8. RAG for Science
-  a. Drug Discovery: retrieval 분자와 fusion of exemplar 분자를 input으로 활용
-  b. Medical Applications: guidance를 retrieve하여 성능 향상
+  - Question Answering: 광범위한 답변 후보의 범위를 축소
+  - Fact Verification: Fact information을 활용하여 hallucination 감소
+  - Commonsense Reasoning: commonsense knowledge를 활용하여 human-like한 방식으로 추론하고 decision-making
+  - Human-Machine Conversation: commonsense knowledge를 활용하여 인간과 기계사이의 대화를 끊김없이 제공
+  - Neural Machine Translation: 전통적인 bilingual corpora 의존도를 RAG를 통해 감소
+  - Event Extraction: event의 case를 knowledge로 활용하여 성능 향상
+  - Summarization: non-English 문제를 해결하거나 top-k의 hidden states를 retrieve하여 모델의 longer inputs 처리 능력을 향상
+3. RAG for Code: 예제 코드를 retrieve하여 성능 향상
+  - Code Generation
+  - Code Summary
+  - Code Completion
+  - Automatic Program Repair
+  - Text-to-SQL and Code-based Semantic Parsing
+4. RAG for Audio
+  - Audio Generation: 관련 오디오를 retrieve하여 성능 향상 및 비슷한 느낌의 오디오를 LLM 학습 없이 생성
+  - Audio Captioning: 관련 캡션을 retrieve하여 성능 향상 및 캡션의 후보를 제시하여 선택할 수 있게 유도
+5. RAG for Image
+  - Image Generation: 관련 이미지를 retrieve하여 성능 향상 및 비슷한 느낌의 이미지를 LLM 학습 없이 생성
+  - Image Captioing: 관련 캡션을 retrieve하여 성능 향상 및 캡션의 후보를 제시하여 선택할 수 있게 유도
+6. RAG for Video
+  - Video Generation: 관련 plot을 retrieve하여 성능 향상
+  - Video Captioning: 관련 캡션을 retrieve하여 성능 향상 및 캡션의 후보를 제시하여 선택할 수 있게 유도
+7. RAG for 3D
+  - Text-to-3D: retrieve한 3D asset을 dffusion 모델에 적용
+8. RAG for knowledge
+  - Knowledge Base Question Answering: Knowledege base를 기반하여 답변을 생성하여 domain 최적화
+  - Knowledge Graph Completion: relevant triplets를 retrieve하여 fusion-in-decoder에 적용
+9. RAG for Science
+  - Drug Discovery: retrieval 분자와 fusion of exemplar 분자를 input으로 활용
+  - Medical Applications: guidance를 retrieve하여 성능 향상
 
 ## 5. Benchmark
 ### Chen et al.
