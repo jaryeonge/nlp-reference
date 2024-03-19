@@ -37,7 +37,7 @@ AIGC는 사람이 직접하거나 rule-based로 하는 것보다 더 적절한 �
   - ** Have to read: FiD, Retro, TOME, EaE
 3. Logit-based RAG: Retriever와 generator가 독립적으로 output을 산출하여 logit기반으로 결합하는 방식
   - ** Have to read: kNN-LM, TRIME
-4. Speculative RAG: Generator를 생략하고 retriever만 사용해서 resouces를 절약하는 방식
+4. Speculative RAG: Generator를 생략하고 retriever만 사용해서 resources를 절약하는 방식
   - ** Have to read: REST, GPTCache
 
 ### RAG Enhancements
