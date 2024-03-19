@@ -50,19 +50,19 @@ AIGC는 사람이 직접하거나 rule-based로 하는 것보다 더 적절한 �
 2. Retriever Enhancement: Retriever의 quality를 높이는 방식
   - Recurive Retireve: retrieve 전에 query를 분리하여 multiple search를 하는 방식. CoT의 input으로 이용하기에 적절
   - Chunk Optimization: chunk의 크기를 조정하여 성능을 향상
-  - Finetune Retriever: retiever를 fine-tuning하여 성능을 향상. embedding model을 tuning하거나 REPLUG처럼 아예 retriever 자체를 훈련할 수도 있다.
+  - Finetune Retriever: retriever를 fine-tuning하여 성능을 향상. embedding model을 tuning하거나 REPLUG처럼 아예 retriever 자체를 훈련할 수도 있다.
   - Hybrid Retrieve: dense + sparse retrieval methods를 동시에 사용하여 성능을 향상
   - Re-ranking: retriever의 결과물의 ranking을 조절하여 성능을 향상
   - Meta-data Filtering: document를 filtering하여 성능을 향상
 3. Generator Enhancement: Generator의 quality를 높이는 방식
   - Prompt Engineering: Stepback Prompt, Active Propmt, Chain of Thought Prompt 등의 prompt 고도화 기법으로 성능을 향상
   - Decoding Tuning: 별도의 decoder를 추가, 이를 tuning하여 성능을 향상
-  - Finetune Generator: geneator를 fint-tuning하여 성능을 향상
+  - Finetune Generator: generator를 fine-tuning하여 성능을 향상
 4. Result Enhancement
   - Rewrite Output: output을 재생성하여 성능을 향상
 5. RAG Pipeline Enhancement
   - Adaptive Retrieval: 의도 분류와 분기처리를 통해 효율적인 리소스 사용, Rule-based & Model-based 방식 존재.
-  - Iterative RAG: 반복적으로 RAG 과정을 수행하여 성능을 향상. query -> retreiver -> generator -> output -> retreiver -> generator ...
+  - Iterative RAG: 반복적으로 RAG 과정을 수행하여 성능을 향상. query -> retriever -> generator -> output -> retriever -> generator ...
 
 ## 4. Applications
 
