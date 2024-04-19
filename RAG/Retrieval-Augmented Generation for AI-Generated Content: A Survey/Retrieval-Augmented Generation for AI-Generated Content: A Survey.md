@@ -1,6 +1,6 @@
 # Retrieval-Augmented Generation for AI-Generated Content: A Survey
 
-## Abstact
+## Abstract
 RAG for AIGC에 대한 foundations, enhancements, applications를 다루고, 한계점과 future work를 제시하는 Paper
 
 ## 1. Introduction
